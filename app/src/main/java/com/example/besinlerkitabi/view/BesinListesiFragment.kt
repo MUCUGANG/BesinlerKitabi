@@ -20,7 +20,9 @@ class BesinListesiFragment : Fragment() {
     private val recyclerBesinAdapter = BesinRecyclerAdapter(arrayListOf())
     private val viewModel by viewModels<BesinListesiViewModel>()//view modeli kurduktan sonra buuradan init ediyoruz.
 
-    
+    fun abc(){
+
+    }
 
     private lateinit var binding : FragmentBesinListesiBinding
     override fun onCreateView(
