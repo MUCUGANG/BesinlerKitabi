@@ -20,8 +20,7 @@ class BesinListesiViewModel : ViewModel() {
         besinler.value  = besinlistesi
         besinHataMesajı.value = false
         besinYukleniyor.value = false
-
-
+        //
 
     }
 
