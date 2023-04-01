@@ -56,6 +56,7 @@ class BesinListesiFragment : Fragment() {
             hata?.let {
                 if (it){
                     binding.besinHataMesaji.visibility = View.VISIBLE
+                    binding.besinListRecycler.visibility = View.GONE
                 }else{
                     binding.besinHataMesaji.visibility = View.GONE
                 }

@@ -11,17 +11,18 @@ class BesinListesiViewModel : ViewModel() {
 
 
     fun refreshData(){
-        val muz = Besin("Muz","100","10","1","www.test.com")
-        val cilek = Besin("Çilek","200","20","10","www.test.com")
-        val elma = Besin("Elma","300","30","15","www.test.com")
+        val muz = Besin("Muz","100","10","1","5","www.test.com")
+        val cilek = Besin("Çilek","200","20","10","4","www.test.com")
+        val elma = Besin("Elma","300","30","15","3","www.test.com")
 
         val besinlistesi = arrayListOf<Besin>(muz,cilek,elma)
 
         besinler.value  = besinlistesi
         besinHataMesajı.value = false
         besinYukleniyor.value = false
-        //
 
     }
+
+
 
 }

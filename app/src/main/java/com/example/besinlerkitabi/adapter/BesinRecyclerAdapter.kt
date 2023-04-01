@@ -3,9 +3,11 @@ package com.example.besinlerkitabi.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.besinlerkitabi.databinding.BesinRecyclerRowBinding
 import com.example.besinlerkitabi.model.Besin
+import com.example.besinlerkitabi.view.BesinListesiFragmentDirections
 
 class BesinRecyclerAdapter (val besinListesi : ArrayList<Besin>):RecyclerView.Adapter<BesinRecyclerAdapter.BesinViewHolder>() {
     class BesinViewHolder(val itemBinding : BesinRecyclerRowBinding) : RecyclerView.ViewHolder(itemBinding.root)
@@ -26,6 +28,12 @@ class BesinRecyclerAdapter (val besinListesi : ArrayList<Besin>):RecyclerView.Ad
         holder.itemBinding.isim.text = besinListesi.get(position).besinIsim
         holder.itemBinding.kalori.text = besinListesi.get(position).besinKalori
         //görsel kısmı eklenecek
+
+        holder.itemView.setOnClickListener { //ilgili görsele tıklandıgında ne olsun demek
+            val action = BesinListesiFragmentDirections.actionBesinListesiFragmentToBesinDetayiFragment(0)
+            Navigation.findNavController(it).navigate(action)
+        }
+
     }
     fun besinListesiniGuncelle(yeniBesinListesi: List<Besin>){//bu fonsiyonla listeye yeni birşey eklenirse yenilenecek
         besinListesi.clear()
