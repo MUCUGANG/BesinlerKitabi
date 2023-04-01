@@ -40,6 +40,15 @@ class BesinListesiFragment : Fragment() {
        viewModel.refreshData()
         //binding.besinListRecycler.layoutManager = LinearLayoutManager(context)//exmlden yaptık
         binding.besinListRecycler.adapter = recyclerBesinAdapter
+
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            binding.besinYukleniyor.visibility = View.VISIBLE
+            binding.besinHataMesaji.visibility = View.GONE
+            binding.besinListRecycler.visibility = View.GONE
+            viewModel.refreshData()
+            binding.swipeRefreshLayout.isRefreshing = false//çünkü kendi progress barımız var iki tane çıkmasın diye false ettik
+
+        }
         observeLiveData()
 
     }

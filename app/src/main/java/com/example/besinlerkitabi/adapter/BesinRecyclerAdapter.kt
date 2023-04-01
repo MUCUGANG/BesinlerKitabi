@@ -7,6 +7,8 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.besinlerkitabi.databinding.BesinRecyclerRowBinding
 import com.example.besinlerkitabi.model.Besin
+import com.example.besinlerkitabi.util.gorselIndir
+import com.example.besinlerkitabi.util.placeHolderYap
 import com.example.besinlerkitabi.view.BesinListesiFragmentDirections
 
 class BesinRecyclerAdapter (val besinListesi : ArrayList<Besin>):RecyclerView.Adapter<BesinRecyclerAdapter.BesinViewHolder>() {
@@ -33,6 +35,9 @@ class BesinRecyclerAdapter (val besinListesi : ArrayList<Besin>):RecyclerView.Ad
             val action = BesinListesiFragmentDirections.actionBesinListesiFragmentToBesinDetayiFragment(0)
             Navigation.findNavController(it).navigate(action)
         }
+        holder.itemBinding.imageView.gorselIndir(besinListesi.get(position).besinGorsel,
+            placeHolderYap(holder.itemView.context)
+        )
 
     }
     fun besinListesiniGuncelle(yeniBesinListesi: List<Besin>){//bu fonsiyonla listeye yeni birşey eklenirse yenilenecek
