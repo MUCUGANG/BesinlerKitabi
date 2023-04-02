@@ -52,6 +52,8 @@ android {
 
         def rxJavaVersion = '2.2.8'
         def rxAndroidVersion = '2.1.1'
+        def room_version = "2.5.1"
+        def preference_version = "1.2.0"
 
 
 
@@ -69,19 +71,24 @@ android {
         implementation "androidx.navigation:navigation-ui-ktx:$navVersion"
         implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
         implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+
+        //Retrofit
         implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
         implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+        //Rxjava
         implementation 'io.reactivex.rxjava3:rxjava:3.1.5'
         implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+
+        //Glide
         implementation 'com.github.bumptech.glide:glide:4.15.1'
 
+        //SharedPreference
+        implementation("androidx.preference:preference-ktx:$preference_version")
 
-
-
-
-
-
-
+       // Room Local Database
+       implementation "androidx.room:room-ktx:$room_version"
+       implementation "androidx.room:room-runtime:$room_version"
+       kapt "androidx.room:room-compiler:$room_version"
 
     }
 }
