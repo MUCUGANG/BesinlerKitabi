@@ -9,6 +9,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.besinlerkitabi.databinding.FragmentBesinDetayiBinding
 import com.example.besinlerkitabi.model.Besin
+import com.example.besinlerkitabi.util.gorselIndir
+import com.example.besinlerkitabi.util.placeHolderYap
 import com.example.besinlerkitabi.viewmodel.BesinDetayiViewModel
 import com.example.besinlerkitabi.viewmodel.BesinListesiViewModel
 
@@ -26,9 +28,7 @@ class BesinDetayiFragment : Fragment() {
 
     override fun onCreateView(
 
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentBesinDetayiBinding.inflate(layoutInflater)
         return binding.root
         //return inflater.inflate(R.layout.fragment_besin_detayi, container, false)
@@ -39,16 +39,18 @@ class BesinDetayiFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.roomVerisiniAl()
-
-    arguments?.let {
-        besinId = BesinDetayiFragmentArgs.fromBundle(it).besinId
-        println(besinId)
-    }
-
+        arguments?.let {
+            besinId = BesinDetayiFragmentArgs.fromBundle(it).besinId
+            println(besinId)
+        }
+        viewModel.roomVerisiniAl(besinId)
         observeLiveData()
 
     }
+
+
+
+
     fun observeLiveData(){
         viewModel.besinLiveData.observe(viewLifecycleOwner, Observer {besin ->
         besin?.let {
@@ -57,6 +59,10 @@ class BesinDetayiFragment : Fragment() {
             binding.besinProtein.text = it.besinProtein
             binding.besinYag.text = it.besinYag
             binding.besinKarbonhidrat.text = it.besinKarbonhidrat
+            context?.let {
+                binding.besinImage.gorselIndir(besin.besinGorsel, placeHolderYap(it))
+            }
+
         }
 
         })

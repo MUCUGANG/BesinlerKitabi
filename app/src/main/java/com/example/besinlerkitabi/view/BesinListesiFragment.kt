@@ -45,7 +45,7 @@ class BesinListesiFragment : Fragment() {
             binding.besinYukleniyor.visibility = View.VISIBLE
             binding.besinHataMesaji.visibility = View.GONE
             binding.besinListRecycler.visibility = View.GONE
-            viewModel.refreshData()
+            viewModel.refreshFromInternet()
             binding.swipeRefreshLayout.isRefreshing = false//çünkü kendi progress barımız var iki tane çıkmasın diye false ettik
 
         }

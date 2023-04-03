@@ -1,5 +1,6 @@
 package com.example.besinlerkitabi.viewmodel
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
@@ -51,7 +52,13 @@ VERİLERİ İNTERNETTEN ÇEKECEĞİMİZ İÇİNBU ORNEK OLARAK YAPTIĞIMIZ VERİ
         */
 
     }
+    fun refreshFromInternet(){
+        verileriInternettenAl()
+    }
+
+    @SuppressLint("SuspiciousIndentation")
     private  fun verileriSQLitetanAl(){
+        besinYukleniyor.value = true
         launch {
           val besinListesi = BesinDataBase(getApplication()).besinDao().getAllBesin()
             besinleriGoster(besinListesi)

@@ -32,7 +32,7 @@ class BesinRecyclerAdapter (val besinListesi : ArrayList<Besin>):RecyclerView.Ad
         //görsel kısmı eklenecek
 
         holder.itemView.setOnClickListener { //ilgili görsele tıklandıgında ne olsun demek
-            val action = BesinListesiFragmentDirections.actionBesinListesiFragmentToBesinDetayiFragment(0)
+            val action = BesinListesiFragmentDirections.actionBesinListesiFragmentToBesinDetayiFragment(besinListesi.get(position).uuid)
             Navigation.findNavController(it).navigate(action)
         }
         holder.itemBinding.imageView.gorselIndir(besinListesi.get(position).besinGorsel,
